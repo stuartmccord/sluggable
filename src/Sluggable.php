@@ -3,9 +3,9 @@
 namespace Stuartmccord\Sluggable;
 
 
-trait SluggableTrait
+trait Sluggable
 {
-    public static function bootSluggableTrait()
+    public static function bootSluggable()
     {
         static::creating(function ($model) {
             $model->setSlug();
