@@ -1,0 +1,15 @@
+{
+    "name": "stuartmccord/sluggable",
+    "description": "Trait to create slugs on laravel models",
+    "require": {
+        "illuminate/database": "~5.2"
+    },
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Stuart McCord",
+            "email": "stuart.mccord@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
