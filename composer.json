@@ -11,5 +11,10 @@
             "email": "stuart.mccord@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "StuartMcCord\\Sluggable\\": "src/"
+        }
+    },
     "minimum-stability": "stable"
 }
