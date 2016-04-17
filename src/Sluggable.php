@@ -14,12 +14,9 @@ trait Sluggable
 
     public function setSlug()
     {
-        $this->slug = str_slug($this->title);
+        $this->slug = str_slug($this->getSlugField());
 
-        $latest_slug =
-            $this::whereRaw("slug RLIKE '^{$this->slug}(-[0-9]*)?$'")
-                ->latest('id')
-                ->pluck('slug');
+        $latest_slug = $this->getLatestSlug();
 
         if (isset($latest_slug)) {
             $pieces = explode('-', $latest_slug);
@@ -28,5 +25,17 @@ trait Sluggable
 
             $this->slug .= '-' . ($number + 1);
         }
+    }
+
+    public function getSlugField()
+    {
+        return $this->title;
+    }
+
+    public function getLatestSlug()
+    {
+        return $this::whereRaw("slug RLIKE '^{$this->slug}(-[0-9]*)?$'")
+            ->latest('id')
+            ->pluck('slug');
     }
 }
