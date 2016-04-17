@@ -13,7 +13,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "StuartMcCord\\Sluggable\\": "src/"
+            "Stuartmccord\\Sluggable\\": "src/"
         }
     },
     "minimum-stability": "stable"
