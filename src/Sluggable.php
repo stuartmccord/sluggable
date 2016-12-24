@@ -18,7 +18,7 @@ trait Sluggable
 
         $latest_slug = $this->getLatestSlug();
 
-        if (isset($latest_slug)) {
+        if ($latest_slug) {
             $pieces = explode('-', $latest_slug);
 
             $number = intval(end($pieces));
@@ -36,6 +36,7 @@ trait Sluggable
     {
         return $this::whereRaw("slug RLIKE '^{$this->slug}(-[0-9]*)?$'")
             ->latest('id')
-            ->pluck('slug');
+            ->pluck('slug')
+            ->first();
     }
 }
