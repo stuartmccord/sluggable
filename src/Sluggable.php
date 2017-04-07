@@ -2,7 +2,6 @@
 
 namespace Stuartmccord\Sluggable;
 
-
 trait Sluggable
 {
     public static function bootSluggable()
@@ -34,7 +33,7 @@ trait Sluggable
 
     public function getLatestSlug()
     {
-        return $this::whereRaw("slug RLIKE '^{$this->slug}(-[0-9]*)?$'")
+        return $this::where('slug', 'regexp', "{$this->slug}(-[0-9]*)?$'")
             ->latest('id')
             ->pluck('slug')
             ->first();
