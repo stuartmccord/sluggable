@@ -2,7 +2,7 @@
     "name": "stuartmccord/sluggable",
     "description": "Trait to create slugs on laravel models",
     "require": {
-        "illuminate/database": "~5.2"
+        "illuminate/database": "~5.4"
     },
     "license": "GPL",
     "authors": [
@@ -16,5 +16,10 @@
             "Stuartmccord\\Sluggable\\": "src/"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "require-dev": {
+        "orchestra/testbench": "~3.4",
+        "orchestra/database": "~3.4@beta",
+        "phpunit/phpunit": "^6.1"
+    }
 }

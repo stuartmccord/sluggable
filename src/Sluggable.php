@@ -33,8 +33,16 @@ trait Sluggable
 
     public function getLatestSlug()
     {
-        return $this::where('slug', 'regexp', "{$this->slug}(-[0-9]*)?$'")
-            ->latest('id')
+        $results = $this::where('slug', 'like', "{$this->slug}%")
+            ->get();
+
+        // doing this here as sqlite doesn't support regex out of the box
+        $results = $results->filter(function ($model, $key) {
+            return preg_match("/{$this->slug}(-[0-9]*)?$/", $model->slug);
+        });
+
+        return $results
+            ->sortByDesc('id')
             ->pluck('slug')
             ->first();
     }
